@@ -1,0 +1,14 @@
+/var/
+
+### php-cs-fixer
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+### PHPUnit
+.phpunit.result.cache
+.phpunit.cache
+
+/vendor/
+
+.idea

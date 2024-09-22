@@ -1,0 +1,42 @@
+{
+  "name": "nerea.enrique/standaaardise",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "NereaEnrique\\Standaaardise\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NereaEnrique\\Standaaardise\\Tests\\": "tests/",
+      "NereaEnrique\\Standaaardise\\Fixtures\\": "fixtures/"
+    },
+    "files": ["fixtures/Builder/data-builders.php"]
+  },
+  "authors": [
+    {
+      "name": "Nerea Enrique",
+      "email": "nerea.enrique@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-sqlite3": "*",
+    "php": "^8.3",
+    "symfony/console": "^7.1",
+    "symfony/http-client": "^7.1",
+    "loophp/collection": "^7.6",
+    "symfony/framework-bundle": "^7.1",
+    "symfony/runtime": "^7.1",
+    "symfony/yaml": "^7.1"
+  },
+  "require-dev": {
+    "symfony/test-pack": "^1.1",
+    "buildotter/php-maker-standalone": "^0.1.0",
+    "fakerphp/faker": "^1.23"
+  },
+  "config": {
+    "allow-plugins": {
+      "symfony/runtime": true
+    }
+  }
+}

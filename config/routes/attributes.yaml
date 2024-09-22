@@ -1,0 +1,5 @@
+api:
+  resource:
+    path: ../../src/Api/
+    namespace: NereaEnrique\Standaaardise\Api
+  type: attribute

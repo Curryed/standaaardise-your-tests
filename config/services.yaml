@@ -1,0 +1,35 @@
+services:
+    _defaults:
+        autowire: false
+        autoconfigure: true
+
+    NereaEnrique\Standaaardise\:
+        resource: '../src/'
+        exclude:
+            - '../src/Exception/'
+            - '../src/*/Exception/'
+            - '../src/Model/'
+            - '../src/*/Model/'
+            - '../src/Kernel.php'
+
+    NereaEnrique\Standaaardise\Api\Booking:
+        arguments:
+            $bookDinosaur: '@NereaEnrique\Standaaardise\UseCase\BookDinosaur'
+            $dinosaursRepository: '@NereaEnrique\Standaaardise\Repository\DinosaursRepository'
+            $bookingRepository: '@NereaEnrique\Standaaardise\Repository\BookingRepository'
+    NereaEnrique\Standaaardise\Repository\BookingRepository: ~
+    NereaEnrique\Standaaardise\UseCase\BookDinosaur:
+        arguments:
+            $bookingRepository: '@NereaEnrique\Standaaardise\Repository\BookingRepository'
+    NereaEnrique\Standaaardise\Repository\DinosaursRepository: ~
+    NereaEnrique\Standaaardise\Api\Dinosaurs:
+        arguments:
+            $dinosaursRepository: '@NereaEnrique\Standaaardise\Repository\DinosaursRepository'
+
+when@test:
+    services:
+        NereaEnrique\Standaaardise\Tests\Mocks\:
+            resource: '../tests/Mocks/'
+        NereaEnrique\Standaaardise\UseCase\BookDinosaur:
+            arguments:
+                $bookingRepository: '@NereaEnrique\Standaaardise\Repository\BookingRepository'
