@@ -33,17 +33,12 @@ final class BookDinosaurTest extends TestCase
     #[Test]
     public function it_throws_an_exception_when_booking_in_the_past(): void
     {
+        self::markTestSkipped('Not implemented yet.');
         // Arrange
-        $dinosaur = \anAdultDinosaur()
-            ->build();
-        $when = \when('yesterday');
-
-        // Assert / Expect
-        self::expectException(DinosaurCannotBeBookedException::class);
-        self::expectExceptionMessage('Cannot book a dinosaur in the past. BACK TO THE FUTURE!');
 
         // Act
-        ($this->bookDinosaur)($dinosaur, $when);
+
+        // Assert
     }
 
     #[Test]

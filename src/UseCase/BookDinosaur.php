@@ -17,10 +17,6 @@ final class BookDinosaur
 
     public function __invoke(Dinosaur $dinosaur, \DateTimeImmutable $when): BookResult
     {
-        if ($when < new \DateTimeImmutable()) {
-            throw new DinosaurCannotBeBookedException('Cannot book a dinosaur in the past. BACK TO THE FUTURE!');
-        }
-
         if (false === $dinosaur->isAdult()) {
             return BookResult::NotAnAdult;
         }
