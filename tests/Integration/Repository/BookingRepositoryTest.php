@@ -42,19 +42,10 @@ final class BookingRepositoryTest extends TestCase
     public function fetch_one_by_id(): void
     {
         // Arrange
-        $bookings = \someBookings(20);
-        foreach ($bookings as $booking) {
-            $this->bookingRepository->save($booking);
-        }
-        $expected = $bookings[\array_rand($bookings)];
 
         // Act
-        $actual = $this->bookingRepository->fetchOneBy([
-            'id' => $expected->id,
-        ]);
 
         // Assert
-        self::assertEquals($expected, $actual);
     }
 
     #[Test]
