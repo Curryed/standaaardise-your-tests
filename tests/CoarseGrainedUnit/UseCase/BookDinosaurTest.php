@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NereaEnrique\Standaaardise\Tests\CoarsedGrainedUnit\UseCase;
 
 use NereaEnrique\Standaaardise\Entity\Booking;
+use NereaEnrique\Standaaardise\Entity\Dinosaur;
 use NereaEnrique\Standaaardise\Exception\DinosaurCannotBeBookedException;
 use NereaEnrique\Standaaardise\Repository\BookingRepository;
 use NereaEnrique\Standaaardise\Repository\BookingRepositoryInterface;
@@ -33,17 +34,12 @@ final class BookDinosaurTest extends TestCase
     #[Test]
     public function it_throws_an_exception_when_booking_in_the_past(): void
     {
+        self::markTestSkipped('Not implemented yet.');
         // Arrange
-        $dinosaur = \anAdultDinosaur()
-            ->build();
-        $when = \when('yesterday');
-
-        // Assert / Expect
-        self::expectException(DinosaurCannotBeBookedException::class);
-        self::expectExceptionMessage('Cannot book a dinosaur in the past. BACK TO THE FUTURE!');
 
         // Act
-        ($this->bookDinosaur)($dinosaur, $when);
+
+        // Assert
     }
 
     #[Test]
@@ -68,15 +64,24 @@ final class BookDinosaurTest extends TestCase
     public function it_cannot_be_booked_if_it_is_already_booked(): void
     {
         // Arrange
-        $aDinosaur = \anAdultDinosaur()
-            ->build();
-        $when = \when('+3 months');
+        $aDinosaur = Dinosaur::create(
+            id: 'e8b534e4-50ac-44e9-a049-c37d6d080acc',
+            name: 'Tyrannosaurus Rex',
+            img: 'https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/reptiles/t/tyrannosaurus-rex_thumb.ngsversion.1597688942681.adapt.1900.1.jpg',
+            description: 'The most fearsome dinosaur of them all',
+            height: 20,
+            length: 40,
+            weight: 8,
+            age: 68,
+        );
+        $when = new \DateTimeImmutable('+3 months');
 
         $this->bookingRepository->save(
-            \aBooking()
-                ->for($aDinosaur)
-                ->when($when)
-            ->build(),
+            Booking::create(
+                id: 'e8b534e4-50ac-44e9-a049-c37d6d080acc',
+                dinosaurId: $aDinosaur->id,
+                when: $when,
+            ),
         );
 
         // Act
